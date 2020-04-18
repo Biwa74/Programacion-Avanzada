@@ -1,0 +1,24 @@
+import serial
+import time
+
+ 
+
+ser = serial.Serial("/dev/ttyUSB0",9600,timeout=1)
+
+ 
+
+
+def driveMotor(drct1,drct2):
+        valList =[str(drct1), str(drct2)]
+        sendStr = ','.join(valList)
+        ser.write(sendStr.encode('utf-8'))
+        time.sleep(0.1)
+
+ 
+
+while 1:
+        print("Direccion 1=")
+        drct1= input()
+        print("Direccion 2=")
+        drct2= input()
+        driveMotor(drct1,drct2)
